@@ -24,16 +24,18 @@ Location = {'Adelaide': 0, 'Albany': 1, 'Albury': 2, 'AliceSprings': 3, 'Badgery
 def main():
     st.set_page_config(page_title="Czy jutro w Australii będzie padać?")
     overview = st.container()
-    center = st.columns(1)
+    left, right = st.columns(2)
     prediction = st.container()
-    predictButton = st.button("Sprawdź czy jutro pada")
 
     st.image("https://content.api.news/v3/images/bin/6a48333d1aa571be691beb66566c7524")
-    with overview:
-        st.title("Czy jutro w Australii będzie padać?")
 
-    with center:
-       miasto = st.selectbox("Wybierz miasto", list(Location.keys()), format_func=lambda x: Location[x])
+    with overview:
+        st.title("Czy przeżyłbyś tytanica?")
+
+    with left:
+        miasto = st.selectbox("Wybierz miasto",Location.keys(), format_func=lambda x: Location[x])
+
+    predictButton = st.button("Sprawdź czy jutro pada")
 
 
     
