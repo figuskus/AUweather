@@ -5,6 +5,7 @@ import numpy as np
 from weather import get_weather
 import path
 import datetime as dt
+from sklearn.neighbors import KNeighborsClassifier
 
 starttime = datetime.now()
 dir = path.Path(__file__).abspath()
@@ -14,7 +15,7 @@ dir = path.Path(__file__).abspath()
 pathToModel = './model.h5'
 
 with open(pathToModel, 'rb') as file:
-    model = pickle.load(file)
+    model:KNeighborsClassifier = pickle.load(file)
 st.write(type(model))
 
 
