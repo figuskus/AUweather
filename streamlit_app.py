@@ -49,7 +49,7 @@ def main():
         with prediction:
             st.write(rain)
             # st.header("Czy będzie jutro padać w {miasto}, Australia?{0}".format("Tak" if rain[0] == 1 else "Nie"))
-            st.subheader("Pewność predykcji {0:.2f} %".format(s_confidence[0][rain][0]*100))
+            # st.subheader("Pewność predykcji {0:.2f} %".format(s_confidence[0][rain][0]*100))
 
 if __name__  == "__main__":
     main()
