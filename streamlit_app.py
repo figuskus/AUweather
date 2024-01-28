@@ -16,7 +16,6 @@ pathToModel = './model.h5'
 
 with open(pathToModel, 'rb') as file:
     mode = pickle.load(file)
-st.write(type(model))
 
 
 today = dt.date.today()
