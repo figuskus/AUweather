@@ -47,7 +47,7 @@ def main():
         s_confidence = model.predict_proba(data)
         st.write(rain)
         print(rain)
-        st.header("Czy będzie jutro padać w {miasto}, Australia?{0}".format("Tak" if rain[0] == 1 else "Nie"))
+        st.header("Czy będzie jutro padać w Australii?{0}".format("Tak" if rain[0] == 1 else "Nie"))
         st.subheader("Pewność predykcji {0:.2f} %".format(s_confidence[0][rain][0]*100))
 
 if __name__  == "__main__":
