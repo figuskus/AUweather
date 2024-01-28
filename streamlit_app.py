@@ -6,7 +6,7 @@ from weather import get_weather
 import path
 import datetime as dt
 
-starttime = date.now()
+starttime = datetime.now()
 dir = path.Path(__file__).abspath()
 # sys.append.path(dir.parent.parent)
 
