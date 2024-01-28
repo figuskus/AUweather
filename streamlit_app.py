@@ -18,7 +18,7 @@ with open(pathToModel, 'rb') as file:
 
 
 today = dt.date.today()
-Location = {'Adelaide': 0, 'Albany': 1, 'Albury': 2, 'AliceSprings': 3, 'BadgerysCreek': 4, 'Ballarat': 5, 'Bendigo': 6, 'Brisbane': 7, 'Cairns': 8, 'Canberra': 9, 'Cobar': 10, 'CoffsHarbour': 11, 'Dartmoor': 12, 'Darwin': 13, 'GoldCoast': 14, 'Hobart': 15, 'Katherine': 16, 'Launceston': 17, 'Melbourne': 18, 'MelbourneAirport': 19, 'Mildura': 20, 'Moree': 21, 'MountGambier': 22, 'MountGinini': 23, 'Newcastle': 24, 'Nhil': 25, 'NorahHead': 26, 'NorfolkIsland': 27, 'Nuriootpa': 28, 'PearceRAAF': 29, 'Penrith': 30, 'Perth': 31, 'PerthAirport': 32, 'Portland': 33, 'Richmond': 34, 'Sale': 35, 'SalmonGums': 36, 'Sydney': 37, 'SydneyAirport': 38, 'Townsville': 39, 'Tuggeranong': 40, 'Uluru': 41, 'WaggaWagga': 42, 'Walpole': 43, 'Watsonia': 44, 'Williamtown': 45, 'Witchcliffe': 46, 'Wollongong': 47, 'Woomera': 48}
+Location = {0: 'Adelaide', 1: 'Albany', 2: 'Albury', 3: 'AliceSprings', 4: 'BadgerysCreek', 5: 'Ballarat', 6: 'Bendigo', 7: 'Brisbane', 8: 'Cairns', 9: 'Canberra', 10: 'Cobar', 11: 'CoffsHarbour', 12: 'Dartmoor', 13: 'Darwin', 14: 'GoldCoast', 15: 'Hobart', 16: 'Katherine', 17: 'Launceston', 18: 'Melbourne', 19: 'MelbourneAirport', 20: 'Mildura', 21: 'Moree', 22: 'MountGambier', 23: 'MountGinini', 24: 'Newcastle', 25: 'Nhil', 26: 'NorahHead', 27: 'NorfolkIsland', 28: 'Nuriootpa', 29: 'PearceRAAF', 30: 'Penrith', 31: 'Perth', 32: 'PerthAirport', 33: 'Portland', 34: 'Richmond', 35: 'Sale', 36: 'SalmonGums', 37: 'Sydney', 38: 'SydneyAirport', 39: 'Townsville', 40: 'Tuggeranong', 41: 'Uluru', 42: 'WaggaWagga', 43: 'Walpole', 44: 'Watsonia', 45: 'Williamtown', 46: 'Witchcliffe', 47: 'Wollongong', 48: 'Woomera'}
 
 
 def main():
