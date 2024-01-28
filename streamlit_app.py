@@ -28,14 +28,12 @@ def main():
     prediction = st.container()
     predictButton = st.button("Sprawdź czy jutro pada")
 
-    st.image("https://media1.popsugar-assets.com/files/thumbor/7CwCuGAKxT"
-             "rQ4wPyOBpKjSsd1JI/fit-in/2048xorig/filters:format_auto-!!-:strip_icc-!!"
-             "-/2017/04/19/743/n/41542884/5429b59c8e78fbc4_MCDTITA_FE014_H_1_.JPG")
+    st.image("https://content.api.news/v3/images/bin/6a48333d1aa571be691beb66566c7524")
     with overview:
-        st.title("Czy przeżyłbyś tytanica?")
+        st.title("Czy jutro w Australii będzie padać?")
 
     with center:
-       miasto = st.selectbox("Wybierz miasto",Location.keys(), format_func=lambda x: Location[x])
+       miasto = st.selectbox("Wybierz miasto", list(Location.keys()), format_func=lambda x: Location[x])
 
 
     
