@@ -44,6 +44,7 @@ def main():
         Week = today.strftime("%U")
         weather = get_weather(miasto)
         data = np.array([int(Week),Location[miasto],weather[0],weather[1],weather[2],weather[3],weather[4],weather[5],weather[6],weather[7],weather[8],weather[9],weather[10]]).reshape(1, -1)
+        st.subheader(data)
         rain = model.predict(data)
         s_confidence = model.predict_proba(data)
         pewnosc = str(s_confidence[0][0]*100)
