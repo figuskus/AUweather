@@ -77,10 +77,10 @@ def get_weather(city):
     MinTemp = daily_temperature_2m_min
     MaxTemp = daily_temperature_2m_max
     Rainfall = daily_rain_sum
-    WindGustDir = daily_wind_direction_10m_dominant
+    WindGustDir = degrees_to_cat(daily_wind_direction_10m_dominant)
     WindGustSpeed = daily_wind_gusts_10m_max
-    WindDir9am = hourly_wind_direction_10m[9]
-    WindDir3pm = hourly_wind_direction_10m[3]
+    WindDir9am = degrees_to_cat(hourly_wind_direction_10m[9])
+    WindDir3pm = degrees_to_cat(hourly_wind_direction_10m[3])
     MeanWindSpeed = (hourly_wind_speed_10m[3]+hourly_wind_speed_10m[9])/2
     MeanHumidity = (hourly_relative_humidity_2m[3]+hourly_relative_humidity_2m[9])/2
     MeanPressure = (hourly_pressure_msl[3]+hourly_pressure_msl[9])/2
@@ -89,3 +89,38 @@ def get_weather(city):
         RainToday = 1
 
     return MinTemp, MaxTemp, Rainfall, WindGustDir, WindGustSpeed, WindDir9am, WindDir3pm, MeanWindSpeed, MeanHumidity, MeanPressure, RainToday
+
+
+def degrees_to_cat(degrees):
+    # Define the cardinal directions and their corresponding degree ranges
+    directions = {
+        'N': (347.5, 10),
+        'NNE': (10, 32.5),
+        'NE': (32.5, 55),
+        'ENE': (55, 77.5),
+        'E': (77.5, 100),
+        'ESE': (100, 122.5),
+        'SE': (122.5, 145),
+        'SSE': (145, 167.5),
+        'S': (167.5, 190),
+        'SSW': (190, 212.5),
+        'SW': (212.5, 235),
+        'WSW': (235, 257.5),
+        'W': (257.5, 280),
+        'WNW': (280, 302.5),
+        'NW': (302.5, 325),
+        'NNW': (325, 347.5)
+    }
+    cat = {'E': 0, 'ENE': 1, 'ESE': 2, 'N': 3, 'NE': 4, 'NNE': 5, 'NNW': 6, 'NW': 7, 'S': 8, 'SE': 9, 'SSE': 10, 'SSW': 11, 'SW': 12, 'W': 13, 'WNW': 14, 'WSW': 15}
+
+    # Check if degrees fall within the defined ranges for cardinal directions
+    for direction, (lower, upper) in directions.items():
+        if lower <= degrees < upper:
+            return cat[direction]
+
+    # Handle the case of degrees falling between 292.5 and 337.5
+    if degrees >= 347.5 or degrees < 10:
+        return 3
+
+    # If no matching direction is found, return None
+    return None
