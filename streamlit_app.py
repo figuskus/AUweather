@@ -15,7 +15,7 @@ dir = path.Path(__file__).abspath()
 pathToModel = './model.h5'
 
 with open(pathToModel, 'rb') as file:
-    model:KNeighborsClassifier = pickle.load(file)
+    mode = pickle.load(file)
 st.write(type(model))
 
 
@@ -47,8 +47,7 @@ def main():
         data = np.array([int(Week),Location[miasto],weather[0],weather[1],weather[2],weather[3],weather[4],weather[5],weather[6],weather[7],weather[8],weather[9],weather[10]]).reshape(1, -1)
         rain = model.predict(data)
         s_confidence = model.predict_proba(data)
-        st.write(rain)
-        print(rain)
+        st.write(s_confidence)
         st.header("Czy będzie jutro padać w Australii?{0}".format("Tak" if rain[0] == 1 else "Nie"))
         # st.subheader("Pewność predykcji {0:.2f} %".format(s_confidence[0][rain][0]*100))
         st.subheader("Pewność predykcji {0:.2f} %".format(s_confidence[0][rain][0]*100))
