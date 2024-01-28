@@ -46,7 +46,7 @@ def main():
         weather = get_weather(miasto)
         data = np.array([int(Week),Location[miasto],weather[0],weather[1],weather[2],weather[3],weather[4],weather[5],weather[6],weather[7],weather[8],weather[9],weather[10]]).reshape(1, -1)
         headers = ['Numer tygodnia','Lokalizacja','Minimalna temperatura', 'Maksymalna temperatura', 'Opady deszczu', 'Kierunek porywu wiatru', 'Prędkość porywu wiatru', 'Kierunek wiatru o 9 rano', 'Kierunek wiatru o 3 po południu', 'Średnia prędkość wiatru', 'Średnia wilgotność', 'Średnie ciśnienie', 'Czy padało dzisiaj']
-        values = [Week,miasto,weather[0],weather[1],weather[2],weather[3],weather[4],weather[5],weather[6],weather[7],weather[8],weather[9],weather[10]]
+        values = ["Wartości":[Week,miasto,weather[0],weather[1],weather[2],weather[3],weather[4],weather[5],weather[6],weather[7],weather[8],weather[9],weather[10]],"Jednostki":['tygodni od początku roku','','stopnie celcjusza', 'stopnie celcjusza', 'milimetry', 'Kierunek porywu wiatru', 'Prędkość porywu wiatru', 'Kierunek wiatru o 9 rano', 'Kierunek wiatru o 3 po południu', 'Średnia prędkość wiatru', 'Średnia wilgotność', 'Średnie ciśnienie', 'Czy padało dzisiaj']]
         df = pd.DataFrame(values, headers)
         st.table(df)
         
