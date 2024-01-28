@@ -44,9 +44,9 @@ def main():
     if predictButton:
         Week = today.strftime("%U")
         weather = get_weather(miasto)
-        data = np.array([int(Week),miasto,weather[0],weather[1],weather[2],weather[3],weather[4],weather[5],weather[6],weather[7],weather[8],weather[9],weather[10]]).reshape(1, -1)
+        data = np.array([int(Week),Location[miasto],weather[0],weather[1],weather[2],weather[3],weather[4],weather[5],weather[6],weather[7],weather[8],weather[9],weather[10]]).reshape(1, -1)
         headers = ['Numer tygodnia','Lokalizacja','Minimalna temperatura', 'Maksymalna temperatura', 'Opady deszczu', 'Kierunek porywu wiatru', 'Prędkość porywu wiatru', 'Kierunek wiatru o 9 rano', 'Kierunek wiatru o 3 po południu', 'Średnia prędkość wiatru', 'Średnia wilgotność', 'Średnie ciśnienie', 'Czy padało dzisiaj']
-        values = [Week,Location[miasto],weather[0],weather[1],weather[2],weather[3],weather[4],weather[5],weather[6],weather[7],weather[8],weather[9],weather[10]]
+        values = [Week,miasto,weather[0],weather[1],weather[2],weather[3],weather[4],weather[5],weather[6],weather[7],weather[8],weather[9],weather[10]]
         df = pd.DataFrame(values, headers)
         st.table(df)
         
