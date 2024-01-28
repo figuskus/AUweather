@@ -15,7 +15,7 @@ dir = path.Path(__file__).abspath()
 pathToModel = './model.h5'
 
 with open(pathToModel, 'rb') as file:
-    mode = pickle.load(file)
+    model = pickle.load(file)
 
 
 today = dt.date.today()
