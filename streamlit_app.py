@@ -35,7 +35,7 @@ def main():
         st.title("Czy przeżyłbyś tytanica?")
 
     with center:
-        miasto = st.selectbox("Miasto",list(Location.keys()), format_func=lambda x: Location[x])
+       miasto = st.selectbox("Wybierz miasto",Location.keys(), format_func=lambda x: Location[x])
 
 
     
