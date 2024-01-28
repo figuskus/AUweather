@@ -2,7 +2,7 @@ import pickle
 from datetime import datetime
 import streamlit as st
 import numpy as np
-from weather import get_weather
+from weather import get_weather, degrees_to_cat
 import path
 import datetime as dt
 from sklearn.neighbors import KNeighborsClassifier
@@ -20,6 +20,7 @@ with open(pathToModel, 'rb') as file:
 
 
 today = dt.date.today()
+cat = {0: 'E', 1: 'ENE', 2: 'ESE', 3: 'N', 4: 'NE', 5: 'NNE', 6: 'NNW', 7: 'NW', 8: 'S', 9: 'SE', 10: 'SSE', 11: 'SSW', 12: 'SW', 13: 'W', 14: 'WNW', 15: 'WSW'}
 Location = {'Adelaide': 0, 'Albany': 1, 'Albury': 2, 'AliceSprings': 3, 'BadgerysCreek': 4, 'Ballarat': 5, 'Bendigo': 6, 'Brisbane': 7, 'Cairns': 8, 'Canberra': 9, 'Cobar': 10, 'CoffsHarbour': 11, 'Dartmoor': 12, 'Darwin': 13, 'GoldCoast': 14, 'Hobart': 15, 'Katherine': 16, 'Launceston': 17, 'Melbourne': 18, 'MelbourneAirport': 19, 'Mildura': 20, 'Moree': 21, 'MountGambier': 22, 'MountGinini': 23, 'Newcastle': 24, 'Nhil': 25, 'NorahHead': 26, 'NorfolkIsland': 27, 'Nuriootpa': 28, 'PearceRAAF': 29, 'Penrith': 30, 'Perth': 31, 'PerthAirport': 32, 'Portland': 33, 'Richmond': 34, 'Sale': 35, 'SalmonGums': 36, 'Sydney': 37, 'SydneyAirport': 38, 'Townsville': 39, 'Tuggeranong': 40, 'Uluru': 41, 'WaggaWagga': 42, 'Walpole': 43, 'Watsonia': 44, 'Williamtown': 45, 'Witchcliffe': 46, 'Wollongong': 47, 'Woomera': 48}
 
 def main():
@@ -46,7 +47,7 @@ def main():
         weather = get_weather(miasto)
         data = np.array([int(Week),Location[miasto],weather[0],weather[1],weather[2],weather[3],weather[4],weather[5],weather[6],weather[7],weather[8],weather[9],weather[10]]).reshape(1, -1)
         headers = ['Numer tygodnia','Lokalizacja','Minimalna temperatura', 'Maksymalna temperatura', 'Opady deszczu', 'Kierunek porywu wiatru', 'Prędkość porywu wiatru', 'Kierunek wiatru o 9 rano', 'Kierunek wiatru o 3 po południu', 'Średnia prędkość wiatru', 'Średnia wilgotność', 'Średnie ciśnienie', 'Czy padało dzisiaj']
-        values = {"Wartości":[Week,miasto,weather[0],weather[1],weather[2],weather[3],weather[4],weather[5],weather[6],weather[7],weather[8],weather[9],weather[10]],"Jednostki":['tygodni od początku roku','','stopnie celcjusza', 'stopnie celcjusza', 'milimetry', 'Kierunek porywu wiatru', 'Prędkość porywu wiatru', 'Kierunek wiatru o 9 rano', 'Kierunek wiatru o 3 po południu', 'Średnia prędkość wiatru', 'Średnia wilgotność', 'Średnie ciśnienie', 'Czy padało dzisiaj']}
+        values = {"Wartości":[Week,miasto,weather[0],weather[1],weather[2],cat[weather[3]],weather[4],cat[weather[5]],cat[weather[6]],weather[7],weather[8],weather[9],weather[10]],"Jednostki":['tygodni od początku roku','','stopnie celcjusza', 'stopnie celcjusza', 'milimetry', 'Kierunek porywu wiatru', 'Prędkość porywu wiatru', 'Kierunek wiatru o 9 rano', 'Kierunek wiatru o 3 po południu', 'Średnia prędkość wiatru', 'Średnia wilgotność', 'Średnie ciśnienie', 'Czy padało dzisiaj']}
         df = pd.DataFrame(values, headers)
         st.table(df)
         
