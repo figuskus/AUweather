@@ -1,12 +1,12 @@
 import pickle
-from datetime import datetime
+from datetime import date
 import streamlit as st
 import numpy as np
 from weather import get_weather
 import path
-import sys
+import datetime
 
-starttime = datetime.now()
+starttime = date.now()
 dir = path.Path(__file__).abspath()
 # sys.append.path(dir.parent.parent)
 
