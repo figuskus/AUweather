@@ -11,8 +11,7 @@ dir = path.Path(__file__).abspath()
 # sys.append.path(dir.parent.parent)
 
 # load model
-print(dir)
-pathToModel = '../model.h5'
+pathToModel = './model.h5'
 
 with open(dir, 'rb') as file:
     model = pickle.load(file)
