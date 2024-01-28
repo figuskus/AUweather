@@ -3,9 +3,9 @@ numpy==1.26.3
 toml
 openmeteo_requests==1.1.0
 pandas==2.2.0
-path==12.5.0
-pytest==8.0.0
-Requests==2.31.0
+path
+pytest
+Requests
 requests_cache==1.1.1
 retry_requests==2.0.0
 scikit_learn==1.4.0
