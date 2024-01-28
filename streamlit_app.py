@@ -13,7 +13,7 @@ dir = path.Path(__file__).abspath()
 # load model
 pathToModel = './model.h5'
 
-with open(dir, 'rb') as file:
+with open(pathToModel, 'rb') as file:
     model = pickle.load(file)
 
 
