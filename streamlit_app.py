@@ -40,16 +40,15 @@ def main():
 
     
 
-    rain = model.predict(data)
-    s_confidence = model.predict_proba(data)
     with predictButton:
         Week = today.strftime("%U")
         weather = get_weather(miasto)
         data = np.array([Week,miasto,weather[0],weather[1],weather[2],weather[3],weather[4],weather[5],weather[6],weather[7],weather[8],weather[9],weather[10]]).reshape(1, -1)
+        rain = model.predict(data)
+        s_confidence = model.predict_proba(data)
         with prediction:
             st.header("Czy będzie jutro padać w {miasto}, Australia?{0}".format("Tak" if rain[0] == 1 else "Nie"))
             st.subheader("Pewność predykcji {0:.2f} %".format(s_confidence[0][rain][0]*100))
 
 if __name__  == "__main__":
     main()
-
