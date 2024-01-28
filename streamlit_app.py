@@ -30,7 +30,7 @@ def main():
     st.image("https://content.api.news/v3/images/bin/6a48333d1aa571be691beb66566c7524")
 
     with overview:
-        st.title("Czy przeżyłbyś tytanica?")
+        st.title("Czy jutro w Australii będzie padać?")
 
     with left:
         miasto = st.selectbox("Wybierz miasto",Location.keys())
