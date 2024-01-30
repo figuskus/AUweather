@@ -43,22 +43,26 @@ def main():
     
 
     if predictButton:
+        #przygotowanie wyników
         Week = today.strftime("%U")
         weather = get_weather(miasto)
         data = np.array([int(Week),Location[miasto],weather[0],weather[1],weather[2],weather[3],weather[4],weather[5],weather[6],weather[7],weather[8],weather[9],weather[10]]).reshape(1, -1)
+
+        #tworzenie tabelki wejscia
         headers = ['Numer tygodnia','Lokalizacja','Minimalna temperatura', 'Maksymalna temperatura', 'Opady deszczu', 'Kierunek porywu wiatru', 'Prędkość porywu wiatru', 'Kierunek wiatru o 9 rano', 'Kierunek wiatru o 3 po południu', 'Średnia prędkość wiatru', 'Średnia wilgotność', 'Średnie ciśnienie', 'Czy padało dzisiaj']
         values = {"Wartości":[Week,miasto,weather[0],weather[1],weather[2],cat[weather[3]],weather[4],cat[weather[5]],cat[weather[6]],weather[7],weather[8],weather[9],weather[10]],"Jednostki":['tygodni od początku roku','','stopnie celcjusza', 'stopnie celcjusza', 'milimetry', '', 'km/h', '', '', 'km/h', '%', 'mbar', '']}
         df = pd.DataFrame(values, headers)
         st.write("Dane wejściowe z aktualnej pogody:")
         st.table(df)
         
+        #przewidywanie
         st.write()
         rain = model.predict(data)
         s_confidence = model.predict_proba(data)
         pewnosc = str(s_confidence[0][0]*100)
-        # st.write(s_confidence)
+        
+        # printowanie wyników
         st.header("Czy będzie jutro padać w "+miasto+", Australia? {0}".format("Tak" if rain[0] == 1 else "Nie"))
-        # st.subheader("Pewność predykcji {0:.2f} %".format(s_confidence[0][rain][0]*100))
         st.subheader("Pewność predykcji "+pewnosc+" %")
 
 
